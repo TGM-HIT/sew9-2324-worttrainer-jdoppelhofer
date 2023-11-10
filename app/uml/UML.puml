@@ -1,0 +1,13 @@
+@startuml
+
+class Wort {
+    +String wort
+    +String url
+    +Wort(String wort, String url)
+    +getWort(): String
+    +getUrl(): String
+    +compareTo(Wort wort): int
+    +toString(): String
+}
+
+@enduml
