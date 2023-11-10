@@ -6,8 +6,6 @@ class Wort {
     +Wort(String wort, String url)
     +getWort(): String
     +getUrl(): String
-    +compareTo(Wort wort): int
-    +toString(): String
 }
 
 @enduml
