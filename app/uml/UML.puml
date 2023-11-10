@@ -18,8 +18,12 @@ class Rechtschreibtrainer {
     -int falscheWorte
     +wortWaehlen(): void
     +wortWaehlen(int index): void
+    +raten(String wort): boolean
     +getAktuellesWort(): String
     +getUrl(): String
-    +raten(String wort): boolean
+}
+
+class GUI {
+    +GUI()
 }
 @enduml
