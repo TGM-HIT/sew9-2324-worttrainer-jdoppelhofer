@@ -1,11 +1,25 @@
 @startuml
 
+Wort <|-- Rechtschreibtrainer
+
 class Wort {
-    +String wort
-    +String url
+    -String wort
+    -String url
     +Wort(String wort, String url)
     +getWort(): String
     +getUrl(): String
 }
 
+class Rechtschreibtrainer {
+    -Wort[] woerter
+    -Wort aktuellesWort
+    -int insgesamtWorte
+    -int richtigeWorte
+    -int falscheWorte
+    +wortWaehlen(): void
+    +wortWaehlen(int index): void
+    +getAktuellesWort(): String
+    +getUrl(): String
+    +raten(String wort): boolean
+}
 @enduml
