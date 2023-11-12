@@ -1,17 +1,22 @@
 package sew9.worttrainer.jdoppelhofer;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Diese Klasse beinhaltet die Wörter und die Statistik des Rechtsschreibtrainers.
  */
 public class Rechtsschreibtrainer {
     private Wort[] woerter; //Array mit allen Wörtern
     private Wort aktuellesWort; //Das aktuelle Wort
+    private Set<Integer> ausgewaehlteWoerter;
     private int insgesamtWorte; //Anzahl aller geratenen Wörter
     private int richtigeWorte; //Anzahl aller richtig geratenen Wörter
     private int falscheWorte; //Anzahl aller falsch geratenen Wörter
 
     public Rechtsschreibtrainer(Wort[] woerter) {
         this.woerter = woerter;
+        ausgewaehlteWoerter = new HashSet<>();
         wortWaehlen();
     }
 
@@ -19,7 +24,16 @@ public class Rechtsschreibtrainer {
      * Wählt ein zufälliges Wort aus.
      */
     public void wortWaehlen() {
-        int index = (int) (Math.random() * woerter.length);
+        if (ausgewaehlteWoerter.size() >= woerter.length) {
+            // Alle Wörter wurden bereits ausgewählt
+            ausgewaehlteWoerter.clear(); // Optional: Zurücksetzen, um von vorn zu beginnen
+        }
+
+        int index;
+        do {
+            index = (int) (Math.random() * woerter.length);
+        } while (ausgewaehlteWoerter.contains(index));
+
         wortWaehlen(index);
     }
 
@@ -31,6 +45,7 @@ public class Rechtsschreibtrainer {
         if (index < 0 || index >= woerter.length)
             throw new IllegalArgumentException();
         aktuellesWort = woerter[index];
+        ausgewaehlteWoerter.add(index);
     }
 
     /**
@@ -43,17 +58,14 @@ public class Rechtsschreibtrainer {
             throw new IllegalArgumentException();
         if (wort.equals(aktuellesWort.getWort())) {
             richtigeWorte++;
+            wortWaehlen();
             return true;
         }
         falscheWorte++;
         return false;
     }
 
-    public String getAktuellesWort() {
-        return aktuellesWort.getWort();
-    }
-
-    public String getUrl() {
-        return aktuellesWort.getUrl();
+    public Wort getAktuellesWort() {
+        return aktuellesWort;
     }
 }
