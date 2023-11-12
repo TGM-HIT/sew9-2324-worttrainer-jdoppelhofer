@@ -24,6 +24,18 @@ class Rechtschreibtrainer {
 }
 
 class GUI {
+    -Controller controller
+    -JPanel imagePanel
     +GUI()
+    +updateImage(Wort wort): void
+}
+
+class Controller {
+    -Rechtsschreibtrainer trainer
+    -GUI gui
+    +Controller()
+    +check(String wort): void
+    +getWort(): Wort
+    +setGUI(GUI gui): void
 }
 @enduml
