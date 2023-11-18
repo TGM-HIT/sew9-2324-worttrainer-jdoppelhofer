@@ -1,0 +1,16 @@
+{
+    "falscheWorte": 0,
+    "woerter": [
+        {
+            "wort": "Hund",
+            "url": "https://img.freepik.com/vektoren-kostenlos/hund-im-einfachen-stil-des-gekritzels-auf-weissem-hintergrund_1308-87569.jpg"
+        },
+        {
+            "wort": "Katze",
+            "url": "https://img.freepik.com/vektoren-kostenlos/eine-aufklebervorlage-von-katzen-cartoon-figur_1308-73786.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1698969600&semt=ais"
+        }
+    ],
+    "insgesamtWorte": 2,
+    "aktuellesWortIndex": 1,
+    "richtigeWorte": 2
+}

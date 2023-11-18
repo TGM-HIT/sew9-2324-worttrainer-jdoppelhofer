@@ -1,0 +1,16 @@
+{
+    "falscheWorte": 0,
+    "woerter": [
+        {
+            "wort": "Hund",
+            "url": "https://beispielbild.com/hund.jpg"
+        },
+        {
+            "wort": "Katze",
+            "url": "https://beispielbild.com/katze.jpg"
+        }
+    ],
+    "insgesamtWorte": 0,
+    "aktuellesWortIndex": 0,
+    "richtigeWorte": 0
+}
