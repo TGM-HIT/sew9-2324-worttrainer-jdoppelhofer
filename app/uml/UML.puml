@@ -1,41 +1,66 @@
 @startuml
 
-Wort <|-- Rechtschreibtrainer
-
 class Wort {
-    -String wort
-    -String url
-    +Wort(String wort, String url)
-    +getWort(): String
-    +getUrl(): String
+    - String wort
+    - String url
+    + Wort(String wort, String url)
+    + getWort(): String
+    + getUrl(): String
 }
 
-class Rechtschreibtrainer {
-    -Wort[] woerter
-    -Wort aktuellesWort
-    -int insgesamtWorte
-    -int richtigeWorte
-    -int falscheWorte
-    +wortWaehlen(): void
-    +wortWaehlen(int index): void
-    +raten(String wort): boolean
-    +getAktuellesWort(): String
-    +getUrl(): String
+class Rechtsschreibtrainer {
+    - Wort[] woerter
+    - Wort aktuellesWort
+    - Set<Integer> ausgewaehlteWoerter
+    - int insgesamtWorte
+    - int richtigeWorte
+    - int falscheWorte
+    + Rechtsschreibtrainer(Wort[] woerter)
+    + wortWaehlen(): void
+    + wortWaehlen(int index): void
+    + raten(String wort): boolean
+    + getAktuellesWort(): Wort
+    + getInsgeamtWorte(): int
+    + getRichtigeWorte(): int
+    + getFalscheWorte(): int
+    + setStatistik(int insgesamt, int richtig, int falsch): void
 }
 
 class GUI {
-    -Controller controller
-    -JPanel imagePanel
-    +GUI()
-    +updateImage(Wort wort): void
+    - Controller controller
+    - JFrame frame
+    - JPanel imagePanel
+    - JTextField textField
+    - JLabel statistikLabel
+    + GUI(Controller controller)
+    + initializeGUI(): void
+    + updateImage(Wort wort): void
+    + updateStatistik(int insgesamt, int richtig, int falsch): void
+    + clearTextField(): void
 }
 
 class Controller {
-    -Rechtsschreibtrainer trainer
-    -GUI gui
-    +Controller()
-    +check(String wort): void
-    +getWort(): Wort
-    +setGUI(GUI gui): void
+    - Rechtsschreibtrainer rechtsschreibtrainer
+    - GUI gui
+    - Speichern speichern
+    + Controller(Rechtsschreibtrainer rechtsschreibtrainer, Speichern speichern)
+    + check(String wort): void
+    + getWort(): Wort
+    + setGUI(GUI gui): void
+    + speichern(): void
+    + laden(): void
 }
+
+class Speichern {
+    - String dateipfad
+    + Speichern(String dateipfad)
+    + speichern(Rechtsschreibtrainer trainer): void
+    + laden(): Rechtsschreibtrainer
+}
+
+Rechtsschreibtrainer "1" -- "*" Wort
+Controller "1" -- "1" Rechtsschreibtrainer
+GUI "1" -- "1" Controller
+Controller "1" -- "1" Speichern
+
 @enduml
