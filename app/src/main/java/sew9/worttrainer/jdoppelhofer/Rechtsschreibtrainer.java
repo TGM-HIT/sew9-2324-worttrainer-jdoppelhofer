@@ -27,7 +27,7 @@ public class Rechtsschreibtrainer {
     public void wortWaehlen() {
         if (ausgewaehlteWoerter.size() >= woerter.length) {
             // Alle Wörter wurden bereits ausgewählt
-            ausgewaehlteWoerter.clear(); // Optional: Zurücksetzen, um von vorn zu beginnen
+            ausgewaehlteWoerter.clear(); // Zurücksetzen, um von vorn zu beginnen
         }
 
         int index;

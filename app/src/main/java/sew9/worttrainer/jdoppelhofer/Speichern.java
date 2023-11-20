@@ -50,7 +50,7 @@ public class Speichern {
 
         // JSON-Objekt in Datei schreiben
         try (FileWriter file = new FileWriter(dateipfad)) {
-            file.write(json.toString(4)); // 4 ist die Einrückungstiefe
+            file.write(json.toString(4));
         } catch (IOException e) {
             e.printStackTrace();
         }
